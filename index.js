@@ -1362,8 +1362,8 @@ if (
   interaction.customId === "calificacion_excelente"
 ) {
 
- const canalCalificaciones =
-  interaction.client.channels.cache.get(LOG_CALIFICACIONES_ID);
+  const canalCalificaciones =
+    interaction.client.channels.cache.get(LOG_CALIFICACIONES_ID);
 
   let texto = "Mala";
 
@@ -1380,7 +1380,7 @@ if (
     .setColor("#8A2BE2")
     .addFields(
       {
-        name: "👤Staff ",
+        name: "👤 Staff",
         value: `${interaction.user}`,
         inline: true
       },
@@ -1396,12 +1396,12 @@ if (
     embeds: [embedCalificacion]
   });
 
-await interaction.reply({
-  content: "✅ Gracias por tu calificación.",
-  ephemeral: true
-});
-
+  await interaction.reply({
+    content: "✅ Gracias por tu calificación.",
+    ephemeral: true
+  });
 }
+
 });
 
 client.login(process.env.TOKEN);
