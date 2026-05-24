@@ -1396,11 +1396,12 @@ if (
     embeds: [embedCalificacion]
   });
 
-  await interaction.reply({
-    content: "✅ Gracias por tu calificación.",
-    ephemeral: true
-  });
-
- 
+await interaction.reply({
+  content: "✅ Gracias por tu calificación.",
+  ephemeral: true
 });
+
+}
+});
+
 client.login(process.env.TOKEN);
