@@ -1401,6 +1401,5 @@ if (
     ephemeral: true
   });
 }
- });
-
+ 
 client.login(process.env.TOKEN);
