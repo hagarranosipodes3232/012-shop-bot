@@ -1400,6 +1400,8 @@ if (
     content: "✅ Gracias por tu calificación.",
     ephemeral: true
   });
-}
- 
+
+ }
+
+});
 client.login(process.env.TOKEN);
