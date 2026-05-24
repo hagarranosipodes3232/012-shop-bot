@@ -1255,7 +1255,7 @@ if (interaction.customId === "modal_vouch") {
     const razon = interaction.fields.getTextInputValue("razon_cierre");
 
     await interaction.reply({
-      content: "🔒 Cerrando ticket...",
+      content: "🔒 Cerrando ticket y generando transcript ...",
       ephemeral: true
     });
 
