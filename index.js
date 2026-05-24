@@ -633,54 +633,59 @@ await interaction.reply({
   ephemeral: true
 });
 }
-    if (interaction.commandName === "panel") {
+if (interaction.commandName === "panel") {
 
-      const embed = new EmbedBuilder()
-        .setTitle("🛒 012 Shop")
-        .setDescription(
-          "Bienvenido al panel oficial de **012 Shop**.\n\n" +
-          "Seleccioná una opción para continuar:\n\n" +
-          "🛍️ **Comprar**\n" +
-          "🆘 **Soporte**\n" +
-          "💳 **Métodos de pago**\n" +
-          "⭐ **Vouches / Reviews**"
-        )
-        .setColor("#8A2BE2")
-        .setFooter({ text: "012 Shop • Sistema oficial" });
+  const embed = new EmbedBuilder()
+    .setAuthor({
+      name: "012 Shop",
+      iconURL: interaction.guild.iconURL()
+    })
+    .setTitle("Tickets System")
+    .setDescription(
+      "🇪🇸 **¡Hola!** Para abrir un ticket, debes presionar uno de los siguientes botones.\n\n" +
+      "🇺🇸 **Hello!** To open a ticket, you must press one of the following buttons.\n\n" +
+      "🛒 **Compra:** Abrí un ticket para realizar una compra.\n" +
+      "🛠️ **Soporte:** Recibí ayuda de nuestro staff.\n" +
+      "⭐ **Vouches:** Dejá tu review de la tienda.\n\n" +
+      "© 012 Shop • Todos los derechos reservados."
+    )
+    .setColor("#2B2D31")
+    .setFooter({
+      text: "012 Shop • Sistema oficial"
+    });
 
-      const row = new ActionRowBuilder().addComponents(
-        new ButtonBuilder()
-          .setCustomId("comprar")
-          .setLabel("Comprar")
-          .setEmoji("🛍️")
-          .setStyle(ButtonStyle.Success),
+  const row = new ActionRowBuilder().addComponents(
+    new ButtonBuilder()
+      .setCustomId("comprar")
+      .setLabel("Compra")
+      .setEmoji("🛒")
+      .setStyle(ButtonStyle.Secondary),
 
-        new ButtonBuilder()
-          .setCustomId("soporte")
-          .setLabel("Soporte")
-          .setEmoji("🆘")
-          .setStyle(ButtonStyle.Primary),
+    new ButtonBuilder()
+      .setCustomId("soporte")
+      .setLabel("Soporte")
+      .setEmoji("🛠️")
+      .setStyle(ButtonStyle.Secondary),
 
-        new ButtonBuilder()
-          .setCustomId("pagos")
-          .setLabel("Pagos")
-          .setEmoji("💳")
-          .setStyle(ButtonStyle.Secondary),
+    new ButtonBuilder()
+      .setCustomId("pagos")
+      .setLabel("Pagos")
+      .setEmoji("💳")
+      .setStyle(ButtonStyle.Secondary),
 
-        new ButtonBuilder()
-          .setCustomId("vouches")
-          .setLabel("Vouches")
-          .setEmoji("⭐")
-          .setStyle(ButtonStyle.Secondary)
-      );
+    new ButtonBuilder()
+      .setCustomId("vouches")
+      .setLabel("Vouches")
+      .setEmoji("⭐")
+      .setStyle(ButtonStyle.Secondary)
+  );
 
-      await interaction.reply({
-        embeds: [embed],
-        components: [row]
-      });
-    }
-  }
-if (interaction.customId?.startsWith("agregar_carrito_")) {
+  await interaction.reply({
+    embeds: [embed],
+    components: [row]
+  });
+}
+  if (interaction.customId?.startsWith("agregar_carrito_")) {
   const productoId = interaction.customId.replace("agregar_carrito_", "");
  const producto = {
   titulo: decodeURIComponent(productoId)
