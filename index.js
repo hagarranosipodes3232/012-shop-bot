@@ -1370,30 +1370,28 @@ if (
   if (interaction.customId === "calificacion_buena") {
     texto = "Buena";
   }
+if (interaction.customId === "calificacion_excelente") {
 
-  if (interaction.customId === "calificacion_excelente") {
-    texto = "Excelente";
+  const canal = interaction.guild.channels.cache.get(VOUCH_CHANNEL_ID);
+
+  if (!canal) {
+    return interaction.reply({
+      content: "❌ Canal de vouches no encontrado.",
+      ephemeral: true
+    });
   }
 
-  const embedCalificacion = new EmbedBuilder()
-    .setTitle("⭐ Nueva Calificación")
-    .setColor("#8A2BE2")
-    .addFields(
-      {
-        name: "👤 Staff",
-        value: `${interaction.user}`,
-        inline: true
-      },
-      {
-        name: "📊 Clasificación",
-        value: texto,
-        inline: true
-      }
-      )
-    .setTimestamp();
+  const mensaje = `
+⭐ **Nueva calificación excelente**
 
-  await canalCalificaciones.send({
-    embeds: [embedCalificacion]
+👤 Usuario: ${interaction.user}
+
+📝 Opinión:
+Excelente servicio, muy recomendado.
+`;
+
+  await canal.send({
+    content: mensaje
   });
 
   await interaction.reply({
