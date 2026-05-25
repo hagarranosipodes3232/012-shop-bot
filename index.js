@@ -1361,7 +1361,6 @@ if (
   interaction.customId === "calificacion_buena" ||
   interaction.customId === "calificacion_excelente"
 ) {
-
   const canalCalificaciones =
     interaction.client.channels.cache.get(LOG_CALIFICACIONES_ID);
 
@@ -1370,35 +1369,38 @@ if (
   if (interaction.customId === "calificacion_buena") {
     texto = "Buena";
   }
-if (interaction.customId === "calificacion_excelente") {
 
-  const canal = interaction.guild.channels.cache.get(VOUCH_CHANNEL_ID);
-
-  if (!canal) {
-    return interaction.reply({
-      content: "❌ Canal de vouches no encontrado.",
-      ephemeral: true
-    });
+  if (interaction.customId === "calificacion_excelente") {
+    texto = "Excelente";
   }
 
-  const mensaje = `
-⭐ **Nueva calificación excelente**
+  const embedCalificacion = new EmbedBuilder()
+    .setTitle("⭐ Nueva Calificación")
+    .setColor("#8A2BE2")
+    .addFields(
+      {
+        name: "👤 Staff",
+        value: `${interaction.user}`,
+        inline: true
+      },
+      {
+        name: "📊 Clasificación",
+        value: texto,
+        inline: true
+      }
+    )
+    .setTimestamp();
 
-👤 Usuario: ${interaction.user}
-
-📝 Opinión:
-Excelente servicio, muy recomendado.
-`;
-
-  await canal.send({
-    content: mensaje
+  await canalCalificaciones.send({
+    embeds: [embedCalificacion]
   });
 
   await interaction.reply({
     content: "✅ Gracias por tu calificación.",
     ephemeral: true
- });
-
+  });
 }
- });
+
+});
+
 client.login(process.env.TOKEN);
