@@ -634,25 +634,16 @@ await interaction.reply({
 });
 }
 if (interaction.commandName === "panel") {
-
   const embed = new EmbedBuilder()
-    .setAuthor({
-      name: "012 Shop",
-      iconURL: interaction.guild.iconURL()
-    })
+    .setAuthor({ name: "012 Shop" })
     .setTitle("Tickets System")
     .setDescription(
       "🇪🇸 **¡Hola!** Para abrir un ticket, debes presionar uno de los siguientes botones.\n\n" +
       "🇺🇸 **Hello!** To open a ticket, you must press one of the following buttons.\n\n" +
-      "🛒 **Compra:** Abrí un ticket para realizar una compra.\n" +
-      "🛠️ **Soporte:** Recibí ayuda de nuestro staff.\n" +
-      "⭐ **Vouches:** Dejá tu review de la tienda.\n\n" +
-      "© 012 Shop • Todos los derechos reservados."
+      "🇧🇷 **Olá!** Para abrir um ticket, você deve pressionar um dos botões abaixo.\n\n" +
+      "© 012 Shop - Todos los derechos reservados."
     )
-    .setColor("#2B2D31")
-    .setFooter({
-      text: "012 Shop • Sistema oficial"
-    });
+    .setColor("#2B2D31");
 
   const row = new ActionRowBuilder().addComponents(
     new ButtonBuilder()
@@ -664,19 +655,13 @@ if (interaction.commandName === "panel") {
     new ButtonBuilder()
       .setCustomId("soporte")
       .setLabel("Soporte")
-      .setEmoji("🛠️")
+      .setEmoji("🔨")
       .setStyle(ButtonStyle.Secondary),
 
     new ButtonBuilder()
-      .setCustomId("pagos")
-      .setLabel("Pagos")
-      .setEmoji("💳")
-      .setStyle(ButtonStyle.Secondary),
-
-    new ButtonBuilder()
-      .setCustomId("vouches")
-      .setLabel("Vouches")
-      .setEmoji("⭐")
+      .setCustomId("partner")
+      .setLabel("Partner")
+      .setEmoji("🤝")
       .setStyle(ButtonStyle.Secondary)
   );
 
