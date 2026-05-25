@@ -670,6 +670,9 @@ if (interaction.commandName === "panel") {
     components: [row]
   });
 }
+
+}
+
   if (interaction.customId?.startsWith("agregar_carrito_")) {
   const productoId = interaction.customId.replace("agregar_carrito_", "");
  const producto = {
@@ -1385,7 +1388,7 @@ if (
     ephemeral: true
   });
 }
-}
+
 });
 
 client.login(process.env.TOKEN);
