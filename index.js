@@ -1389,7 +1389,7 @@ if (
         value: texto,
         inline: true
       }
-    )
+    
     .setTimestamp();
 
   await canalCalificaciones.send({
